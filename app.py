@@ -2,19 +2,24 @@ import streamlit as st
 import pickle
 import numpy as np
 
+#Page Configuration
+st.set_page_config(page_title="Diabetes Prediction App", page_icon="🩺")
+
 #Disclaimer
 # Sidebar
-st.sidebar.title("Disclaimer")
-st.sidebar.write("This is a test application built for educational and portfolio purposes only. It is not intended for medical diagnosis or clinical use. Always consult a qualified healthcare professional for medical advice.")
+st.sidebar.title("⚠️ Disclaimer")
+st.sidebar.write("This is a test application built for educational and portfolio purposes only. It is not intended for medical diagnosis or clinical use.")
 st.sidebar.write("---")
 st.sidebar.write("Built by **Rosewal Simon Almeida**")
+st.sidebar.write("[GitHub](https://github.com/roswel0710) · [Portfolio](https://rosewalalmeida.carrd.co)")
 
 #Load the mmodels
 model = pickle.load(open('model.pkl','rb'))
 scaler = pickle.load(open('scaler.pkl','rb'))
 
 #streamlit UI
-st.title("Diabetes Prediction App")
+st.title("🩺 Diabetes Prediction App")
+st.write("Enter your health metrics below to check your diabetes risk.")
 
 #User Input fields
 pregnancies = st.number_input("Pregnancies", min_value=0, max_value=17, value=0)
@@ -38,9 +43,22 @@ if st.button("Predict Diabetes"):
     prediction = model.predict(input_data_sacled)
 
     #show_result
+    #show_result
+    probability = model.predict_proba(input_data_sacled)
+
     if prediction[0] == 1:
-        st.error ("The model predicts **Diabetes**.")
+        st.error("⚠️ The model predicts **Diabetes**.")
+        st.write(f"**Confidence:** {probability[0][1] * 100:.1f}%")
     else:
-        st.success("The model predicts **No Diabetes**")
+        st.success("✅ The model predicts **No Diabetes**.")
+        st.write(f"**Confidence:** {probability[0][0] * 100:.1f}%")
+
+    st.write("---")
+    st.write("**Your Input Summary:**")
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Age", age)
+    col2.metric("Glucose", glucose)
+    col3.metric("BMI", bmi)
+    col4.metric("Blood Pressure", blood_pressure)
 
     
