@@ -2,6 +2,13 @@ import streamlit as st
 import pickle
 import numpy as np
 
+#Disclaimer
+# Sidebar
+st.sidebar.title("Disclaimer")
+st.sidebar.write("This is a test application built for educational and portfolio purposes only. It is not intended for medical diagnosis or clinical use. Always consult a qualified healthcare professional for medical advice.")
+st.sidebar.write("---")
+st.sidebar.write("Built by **Roswel Simon Almeida**")
+
 #Load the mmodels
 model = pickle.load(open('model.pkl','rb'))
 scaler = pickle.load(open('scaler.pkl','rb'))
@@ -10,14 +17,14 @@ scaler = pickle.load(open('scaler.pkl','rb'))
 st.title("Diabetes Prediction App")
 
 #User Input fields
-pregnancies = st.number_input("Pregnancies", min_value=0, max_value=20, value=0)
-glucose = st.number_input("Glucose Level", min_value = 0, max_value = 300, value = 120)
-blood_pressure = st.number_input("Blood Pressure", min_value=0, max_value=200, value=80)
-skin_thickness = st.number_input ("Skin Thickness", min_value=0, max_value = 100, value =20)
-insulin = st.number_input("Insulin Level", min_value=0, max_value=900, value=80)
-bmi = st.number_input("BMI", min_value=0.0, max_value=70.0, value=25.0, format="%.1f")
+pregnancies = st.number_input("Pregnancies", min_value=0, max_value=17, value=0)
+glucose = st.number_input("Glucose Level", min_value = 44, max_value = 300, value = 120)
+blood_pressure = st.number_input("Blood Pressure", min_value=24, max_value=200, value=80)
+skin_thickness = st.number_input ("Skin Thickness", min_value=7, max_value = 100, value =20)
+insulin = st.number_input("Insulin Level", min_value=14, max_value=900, value=80)
+bmi = st.number_input("BMI", min_value=18.0, max_value=70.0, value=25.0, format="%.1f")
 dpf = st.number_input("Diabetes Pedigree Function", min_value=0.0, max_value=3.0, value=0.5, format="%.1f")
-age = st.number_input("Age", min_value=0, max_value=120, value=30)
+age = st.number_input("Age", min_value=20, max_value=120, value=30)
 
 #Button to make predictions
 if st.button("Predict Diabetes"):
