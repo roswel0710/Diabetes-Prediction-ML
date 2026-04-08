@@ -11,7 +11,7 @@ st.sidebar.title("⚠️ Disclaimer")
 st.sidebar.write("This is a test application built for educational and portfolio purposes only. It is not intended for medical diagnosis or clinical use.")
 st.sidebar.write("---")
 st.sidebar.write("Built by **Rosewal Simon Almeida**")
-st.sidebar.write("[GitHub](https://github.com/roswel0710) · [Portfolio](https://rosewalalmeida.carrd.co)")
+st.sidebar.write("[GitHub](https://github.com/roswel0710) · [Portfolio](https://roswel0710.github.io)")
 
 #Load the mmodels
 model = pickle.load(open('model.pkl','rb'))
