@@ -7,7 +7,7 @@ import numpy as np
 st.sidebar.title("Disclaimer")
 st.sidebar.write("This is a test application built for educational and portfolio purposes only. It is not intended for medical diagnosis or clinical use. Always consult a qualified healthcare professional for medical advice.")
 st.sidebar.write("---")
-st.sidebar.write("Built by **Roswel Simon Almeida**")
+st.sidebar.write("Built by **Rosewal Simon Almeida**")
 
 #Load the mmodels
 model = pickle.load(open('model.pkl','rb'))
